@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      httpclient:
+        connect-timeout: 10000
+        response-timeout: 30s
+
+  zipkin:
+    base-url: http://localhost:9411
+    sender:
+      type: web
+
+  sleuth:
+    sampler:
+      probability: 1
+
+server:
+  port: 8700
+zuul:
+  routes:
+    sentence: /sentences-service/**
+
+logging:
+  file:
+    name: /opt/stuff/logs/zuul.log
+  level:
+    root: info

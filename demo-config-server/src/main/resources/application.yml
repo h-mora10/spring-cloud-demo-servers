@@ -1,0 +1,26 @@
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/h-mora10/sample-spring-config-props
+          default-label: main
+          basedir: /opt/stuff/config_props/
+          refresh-rate: 10
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+server:
+  port: 8888
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh, bus-env
+  endpoint:
+    refresh:
+      enabled: true
